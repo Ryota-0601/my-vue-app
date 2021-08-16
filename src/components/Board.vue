@@ -9,11 +9,12 @@
           v-for="(item, index) in lists"
           v-bind:key="item.id"
           v-bind:title="item.title"
+          v-bind:cards="item.cards"
           v-bind:listIndex="index"
         ></List>
       </div>
 
-      <ListAdd v-on:add="addList"></ListAdd>
+      <ListAdd v-on:emitadd="addList"></ListAdd>
     </main>
   </div>
 </template>
@@ -24,13 +25,16 @@ import List from "./List.vue"
 export default {
   data: function () {
     return {
-      lists: [{ title: "Track and Field" }, { title: "Todo" }],
+      lists: [
+        { title: "Track and Field", cards: [{ body: "300m" }] },
+        { title: "Todo", cards: [] },
+      ],
     }
   },
   methods: {
-    addList: function () {
-      //this.title = ""
-      this.lists.push({ title: "" })
+    addList: function (title) {
+      console.log(title)
+      this.lists.push({ title: title })
     },
   },
 

@@ -1,5 +1,5 @@
 <template>
-  <form class="addlist" v-on:submit.prevent="$emit('add')">
+  <form class="addlist" v-on:submit.prevent="add">
     <input v-model="title" type="text" class="text-input" />
 
     <button type="submit" class="add-button">Add</button>
@@ -8,16 +8,15 @@
 
 <script>
 export default {
-  // props: {
-  //   lists: {
-  //     type: Array,
-  //     //required: true,
-  //   },
-  // },
   data: function () {
     return {
       title: "",
     }
+  },
+  methods: {
+    add() {
+      this.$emit("emitadd", this.title)
+    },
   },
 }
 </script>
